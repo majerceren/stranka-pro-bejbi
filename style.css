@@ -1,0 +1,766 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =========================================
+   SPOLEČNÉ
+========================================= */
+
+.page {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.page-one {
+    background:
+        radial-gradient(circle at 10% 20%, #fff7f7 0%, transparent 30%),
+        radial-gradient(circle at 90% 80%, #fff0f3 0%, transparent 35%),
+        #f9e9df;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        transform 1s cubic-bezier(.77,0,.18,1),
+        opacity 1s ease;
+}
+
+.page-two {
+    background:
+        radial-gradient(circle at 15% 15%, #fff1f4, transparent 30%),
+        radial-gradient(circle at 85% 80%, #ffe9ee, transparent 30%),
+        #f6ddd5;
+
+    transform: translateX(100%);
+    opacity: 0;
+
+    transition:
+        transform 1s cubic-bezier(.77,0,.18,1),
+        opacity 1s ease;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================
+   PŘECHOD
+========================================= */
+
+body.show-page-two .page-one {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+body.show-page-two .page-two {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+/* =========================================
+   KVĚTINY
+========================================= */
+
+.flowers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.flowers span {
+    position: absolute;
+    font-size: clamp(25px, 4vw, 55px);
+
+    animation:
+        flowerFloat 5s ease-in-out infinite;
+}
+
+.flowers span:nth-child(1) {
+    left: 3%;
+    top: 5%;
+}
+
+.flowers span:nth-child(2) {
+    left: 15%;
+    top: 12%;
+}
+
+.flowers span:nth-child(3) {
+    left: 28%;
+    top: 4%;
+}
+
+.flowers span:nth-child(4) {
+    right: 20%;
+    top: 7%;
+}
+
+.flowers span:nth-child(5) {
+    right: 4%;
+    top: 16%;
+}
+
+.flowers span:nth-child(6) {
+    left: 5%;
+    top: 40%;
+}
+
+.flowers span:nth-child(7) {
+    right: 5%;
+    top: 40%;
+}
+
+.flowers span:nth-child(8) {
+    left: 2%;
+    bottom: 10%;
+}
+
+.flowers span:nth-child(9) {
+    left: 18%;
+    bottom: 5%;
+}
+
+.flowers span:nth-child(10) {
+    right: 15%;
+    bottom: 5%;
+}
+
+.flowers span:nth-child(11) {
+    right: 3%;
+    bottom: 15%;
+}
+
+.flowers span:nth-child(12) {
+    left: 32%;
+    bottom: 7%;
+}
+
+.flowers span:nth-child(13) {
+    left: 45%;
+    top: 4%;
+}
+
+.flowers span:nth-child(14) {
+    right: 35%;
+    bottom: 4%;
+}
+
+.flowers span:nth-child(15) {
+    left: 4%;
+    top: 70%;
+}
+
+.flowers span:nth-child(16) {
+    right: 5%;
+    top: 70%;
+}
+
+.flowers span:nth-child(17) {
+    left: 50%;
+    bottom: 4%;
+}
+
+@keyframes flowerFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+}
+
+
+/* =========================================
+   SRDÍČKA NA POZADÍ
+========================================= */
+
+.heart-decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.heart-decoration span {
+    position: absolute;
+    color: #e3293f;
+    font-size: clamp(20px, 3vw, 42px);
+
+    animation:
+        heartFloat 4s ease-in-out infinite;
+}
+
+.heart-decoration span:nth-child(1) {
+    left: 8%;
+    top: 28%;
+}
+
+.heart-decoration span:nth-child(2) {
+    left: 20%;
+    top: 25%;
+}
+
+.heart-decoration span:nth-child(3) {
+    left: 30%;
+    bottom: 25%;
+}
+
+.heart-decoration span:nth-child(4) {
+    right: 15%;
+    top: 30%;
+}
+
+.heart-decoration span:nth-child(5) {
+    right: 28%;
+    top: 20%;
+}
+
+.heart-decoration span:nth-child(6) {
+    right: 7%;
+    top: 55%;
+}
+
+.heart-decoration span:nth-child(7) {
+    left: 12%;
+    bottom: 35%;
+}
+
+.heart-decoration span:nth-child(8) {
+    right: 12%;
+    bottom: 28%;
+}
+
+.heart-decoration span:nth-child(9) {
+    left: 25%;
+    top: 55%;
+}
+
+.heart-decoration span:nth-child(10) {
+    right: 30%;
+    bottom: 30%;
+}
+
+.heart-decoration span:nth-child(11) {
+    left: 40%;
+    top: 20%;
+}
+
+.heart-decoration span:nth-child(12) {
+    right: 40%;
+    bottom: 20%;
+}
+
+@keyframes heartFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(8deg);
+    }
+}
+
+
+/* =========================================
+   PAPÍR
+========================================= */
+
+.paper {
+    position: relative;
+    width: min(650px, 75vw);
+    min-height: 270px;
+
+    background: #fffdf4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 30px;
+
+    transform: rotate(-1.5deg);
+
+    filter:
+        drop-shadow(0 20px 25px rgba(80, 30, 30, .15));
+
+    clip-path: polygon(
+        0% 4%,
+        7% 1%,
+        14% 4%,
+        23% 1%,
+        32% 4%,
+        42% 1%,
+        51% 4%,
+        60% 1%,
+        70% 4%,
+        80% 1%,
+        90% 4%,
+        100% 1%,
+        98% 93%,
+        91% 97%,
+        82% 94%,
+        72% 98%,
+        62% 94%,
+        51% 98%,
+        41% 94%,
+        31% 98%,
+        20% 94%,
+        10% 97%,
+        1% 94%
+    );
+
+    z-index: 5;
+}
+
+.paper h1 {
+    color: #e3263e;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: clamp(50px, 8vw, 95px);
+    font-weight: 700;
+
+    text-align: center;
+
+    transform: rotate(1.5deg);
+
+    text-shadow:
+        1px 1px 0 #bd1d32;
+}
+
+.heart-i {
+    color: #e3263e;
+    display: inline-block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: .7em;
+
+    transform:
+        rotate(-8deg)
+        translateY(-4px);
+}
+
+
+/* =========================================
+   SLIDER
+========================================= */
+
+.slider-area {
+    position: absolute;
+
+    bottom: 7%;
+
+    width: min(700px, 80vw);
+
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider-title {
+    color: #a82134;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: clamp(25px, 4vw, 42px);
+
+    margin-bottom: 18px;
+
+    transform: rotate(-2deg);
+}
+
+.slider {
+    position: relative;
+
+    width: 100%;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+}
+
+.slider-track {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: 12px;
+
+    background: #f4a5af;
+
+    border-radius: 100px;
+
+    box-shadow:
+        inset 0 2px 4px rgba(0,0,0,.12);
+}
+
+.slider-end {
+    position: absolute;
+
+    right: -4px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background: #e3293f;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 5px 15px rgba(150,0,20,.25);
+}
+
+.slider-heart {
+    position: absolute;
+
+    left: 0;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background: #e3293f;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+
+    cursor: grab;
+
+    user-select: none;
+    touch-action: none;
+
+    box-shadow:
+        0 7px 20px rgba(150,0,20,.3);
+
+    z-index: 3;
+
+    transition:
+        transform .15s ease;
+}
+
+.slider-heart:active {
+    cursor: grabbing;
+    transform: scale(1.12);
+}
+
+
+/* =========================================
+   DRUHÁ STRÁNKA
+========================================= */
+
+.plan-paper {
+    position: relative;
+
+    width: min(760px, 88vw);
+
+    margin: 70px auto;
+
+    padding: 55px 50px;
+
+    background: #fffdf4;
+
+    transform: rotate(.7deg);
+
+    box-shadow:
+        0 20px 45px rgba(70,20,20,.15);
+
+    clip-path: polygon(
+        0% 2%,
+        8% 4%,
+        17% 1%,
+        26% 4%,
+        36% 1%,
+        47% 4%,
+        58% 1%,
+        69% 4%,
+        80% 1%,
+        91% 4%,
+        100% 2%,
+        98% 95%,
+        90% 98%,
+        80% 95%,
+        70% 98%,
+        60% 95%,
+        50% 98%,
+        40% 95%,
+        30% 98%,
+        20% 95%,
+        10% 98%,
+        1% 95%
+    );
+
+    z-index: 5;
+}
+
+.plan-paper h2 {
+    text-align: center;
+
+    color: #e3293f;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: clamp(45px, 7vw, 70px);
+
+    margin-bottom: 40px;
+}
+
+
+/* =========================================
+   PROGRAM
+========================================= */
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0;
+}
+
+.plan-item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 130px 1fr;
+
+    min-height: 70px;
+
+    padding: 14px 0;
+
+    border-bottom: 2px dashed #e9a5ad;
+}
+
+.plan-item::before {
+    content: "♥";
+
+    position: absolute;
+
+    left: 116px;
+    top: 21px;
+
+    color: #e3293f;
+
+    font-size: 15px;
+}
+
+.time {
+    color: #b3293e;
+
+    font-weight: bold;
+
+    padding-right: 25px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+}
+
+.activity {
+    color: #542c31;
+
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+
+    font-size: 18px;
+
+    padding-left: 15px;
+
+    line-height: 1.5;
+}
+
+.plan-item.last {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   PADAJÍCÍ SRDÍČKA
+========================================= */
+
+.falling-hearts {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+.falling-heart {
+    position: absolute;
+
+    top: -60px;
+
+    color: #e3293f;
+
+    animation:
+        fall linear forwards;
+}
+
+@keyframes fall {
+    from {
+        transform:
+            translateY(-60px)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   BERUŠKY
+========================================= */
+
+.ladybugs {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+.ladybug {
+    position: absolute;
+
+    font-size: 28px;
+
+    animation:
+        ladybugFly linear infinite;
+}
+
+@keyframes ladybugFly {
+    0% {
+        transform:
+            translate(-100px, 0)
+            rotate(0deg);
+    }
+
+    25% {
+        transform:
+            translate(25vw, -50px)
+            rotate(15deg);
+    }
+
+    50% {
+        transform:
+            translate(55vw, 80px)
+            rotate(-10deg);
+    }
+
+    75% {
+        transform:
+            translate(80vw, -30px)
+            rotate(12deg);
+    }
+
+    100% {
+        transform:
+            translate(110vw, 40px)
+            rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   MOBIL
+========================================= */
+
+@media (max-width: 600px) {
+
+    .paper {
+        width: 88vw;
+        min-height: 230px;
+    }
+
+    .paper h1 {
+        font-size: 52px;
+    }
+
+    .slider-area {
+        width: 85vw;
+        bottom: 8%;
+    }
+
+    .slider-title {
+        font-size: 29px;
+        text-align: center;
+    }
+
+    .plan-paper {
+        width: 92vw;
+        margin: 35px auto;
+        padding: 45px 25px;
+    }
+
+    .plan-item {
+        grid-template-columns: 85px 1fr;
+    }
+
+    .plan-item::before {
+        left: 75px;
+    }
+
+    .activity {
+        font-size: 15px;
+    }
+
+    .time {
+        font-size: 12px;
+    }
+}
